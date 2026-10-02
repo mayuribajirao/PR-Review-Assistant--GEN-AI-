@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ReviewPulse AI — AI Pull Request Assistant</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&amp;family=Jetbrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts: Geist & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>tailwind.config = {theme: {extend: {fontFamily: {sans: ["Geist", "sans-serif"], mono: ["JetBrains Mono", "monospace"], headline: ["Geist"], display: ["Geist"], body: ["Geist"], label: ["Jetbrains Mono"]}, colors: {"on-tertiary-container": "#4b4e5a", "surface-container": "#1b1e34", "surface-dim": "#0f1227", "on-tertiary-fixed-variant": "#434652", "on-secondary-fixed-variant": "#444653", "inverse-primary": "#885123", "tertiary-container": "#bec0ce", "inverse-on-surface": "#2c2f45", outline: "#9f8d82", "secondary-fixed-dim": "#c5c5d6", error: "#ffb4ab", "on-error-container": "#ffdad6", "on-secondary-fixed": "#191b27", "secondary-container": "#464856", "primary-fixed": "#ffdcc4", "surface-container-lowest": "#090c21", "surface-container-highest": "#30334a", "on-surface-variant": "#d7c3b6", "on-primary-container": "#754214", "secondary-fixed": "#e1e1f2", "surface-bright": "#35384f", "primary-fixed-dim": "#ffb780", "on-tertiary": "#2d303b", background: "#0f1227", "primary-container": "#f9b17a", "surface-variant": "#30334a", "on-primary-fixed": "#2f1400", "on-background": "#dfe0fe", primary: "#ffd4b6", "on-tertiary-fixed": "#181b25", surface: "#0f1227", "inverse-surface": "#dfe0fe", "on-primary": "#4e2600", "on-surface": "#dfe0fe", "surface-container-high": "#26283f", "tertiary-fixed-dim": "#c4c6d3", "on-error": "#690005", "error-container": "#93000a", "surface-tint": "#ffb780", secondary: "#c5c5d6", "on-secondary-container": "#b6b7c7", "outline-variant": "#52443b", tertiary: "#dadcea", "on-secondary": "#2e303c", "on-primary-fixed-variant": "#6b3a0d", "tertiary-fixed": "#e0e2f0", "surface-container-low": "#171a2f"}, fontSize: {}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+</head>
+<body class="bg-[#2D3250] text-[#D8DAE8] font-sans min-h-screen flex flex-col justify-between antialiased selection:bg-[#F9B17A] selection:text-[#2D3250]">
+<!-- Minimal Header Navigation -->
+<header class="w-full">
+<div class="max-w-6xl mx-auto px-6 sm:px-12 py-6 flex items-center justify-between">
+<!-- Brand Logo / Product Anchor -->
+<a class="flex items-center gap-2.5 text-white font-medium hover:opacity-90 transition-opacity" href="#">
+<div class="w-8 h-8 rounded-[8px] bg-[#424769] flex items-center justify-center text-[#F9B17A]">
+<span class="material-symbols-outlined text-[19px]">terminal</span>
+</div>
+<span class="text-[17px] tracking-tight font-semibold">ReviewPulse AI</span>
+<span class="hidden sm:inline-block text-[#676F9D] text-[13px] font-normal ml-1">/ AI Pull Request Assistant</span>
+</a>
+<!-- Minimal Navigation Links -->
+<nav class="flex items-center gap-6 sm:gap-8 text-[14px]">
+<a class="text-[#D8DAE8] hover:text-white transition-colors" href="#">Docs</a>
+<a class="text-[#D8DAE8] hover:text-white transition-colors" href="#">Integrations</a>
+<a class="text-[#676F9D] hover:text-white transition-colors" href="#">Sign In</a>
+</nav>
+</div>
+</header>
+<!-- Main Content: Centered, calm, uncluttered & spacious -->
+<main class="flex-1 flex flex-col justify-center items-center px-6 sm:px-10 py-12 sm:py-20 w-full max-w-4xl mx-auto">
+<!-- Headline -->
+<h1 class="text-white text-[32px] sm:text-[36px] font-semibold tracking-tight text-center leading-[1.25] mb-4">
+      Understand any Pull Request in seconds.
+    </h1>
+<!-- Subtext: Relaxed single sentence in #D8DAE8, 16-18px -->
+<p class="text-[#D8DAE8] text-[16px] sm:text-[18px] text-center max-w-2xl leading-relaxed font-normal">
+      Drop in a GitHub link to get clear architectural summaries, risk alerts, and human review drafts in moments.
+    </p>
+<!-- 48px spacing below subtext before the input -->
+<div class="w-full max-w-[620px] mt-[48px]">
+<form class="w-full" id="pr-form" onsubmit="event.preventDefault(); triggerAnalyze();">
+<!-- Input Container / Card: #424769, 12px rounded, min 56px height -->
+<div class="w-full min-h-[58px] bg-[#424769] rounded-[12px] p-2 flex items-center gap-2.5 shadow-lg transition-all focus-within:ring-2 focus-within:ring-[#F9B17A]/40">
+<!-- GitHub Icon Inside Left -->
+<div class="pl-3.5 flex items-center text-[#D8DAE8]/70 pointer-events-none">
+<svg aria-hidden="true" class="w-5 h-5 fill-current" viewbox="0 0 16 16">
+<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+</svg>
+</div>
+<!-- Input Element -->
+<input autocomplete="off" class="flex-1 bg-transparent border-none text-white text-[16px] placeholder:text-[#D8DAE8]/50 focus:ring-0 focus:outline-none px-1 py-1" id="pr-url-input" placeholder="Paste a GitHub PR URL…" spellcheck="false" type="text"/>
+<!-- Primary Button: Solid #F9B17A, navy text, 12px rounded, generously padded -->
+<button class="h-[44px] px-6 bg-[#F9B17A] hover:bg-[#fabc8c] active:scale-[0.98] text-[#2D3250] font-semibold text-[15px] rounded-[12px] transition-all flex items-center gap-2 whitespace-nowrap shadow-sm" id="analyze-btn" type="submit">
+<span>Analyze PR</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Optional subtle example helper -->
+<div class="mt-3.5 px-3 flex items-center justify-between text-[#676F9D] text-[13px]">
+<span>
+          Try an example:
+          <button class="text-[#D8DAE8]/80 hover:text-[#F9B17A] ml-1 font-mono transition-colors underline underline-offset-2" onclick="fillPR('https://github.com/supabase/auth-js/pull/842')" type="button">
+            supabase/auth-js#842
+          </button>
+</span>
+<span class="hidden sm:inline-block font-mono text-[12px]">Cmd + Enter</span>
+</div>
+<!-- Feedback status notification -->
+<div class="hidden opacity-0 transition-opacity duration-200 mt-4 px-4 py-2.5 rounded-[12px] bg-[#424769] text-[#F9B17A] text-[14px] flex items-center gap-2.5 justify-center" id="status-toast">
+<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span>
+<span>Fetching PR metadata &amp; analyzing diff...</span>
+</div>
+</div>
+<!-- Below input: Exactly three feature highlights in a simple horizontal row -->
+<!-- Icon, short label ("Summary", "Risk Detection", "Test Suggestions") in 15px text, muted color #676F9D, spaced widely apart, NO borders, NO boxes, NO background cards -->
+<div class="mt-14 flex flex-wrap items-center justify-center gap-10 sm:gap-14 text-[#676F9D]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-[#676F9D]">description</span>
+<span class="text-[15px] font-medium text-[#676F9D]">Summary</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-[#676F9D]">shield_with_heart</span>
+<span class="text-[15px] font-medium text-[#676F9D]">Risk Detection</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-[#676F9D]">fact_check</span>
+<span class="text-[15px] font-medium text-[#676F9D]">Test Suggestions</span>
+</div>
+</div>
+</main>
+<!-- Minimal Footer: Very bottom only in muted tone -->
+<footer class="w-full pb-8 pt-4">
+<div class="max-w-6xl mx-auto px-6 sm:px-12 flex flex-col sm:flex-row items-center justify-between text-[#676F9D] text-[13px] gap-3">
+<div>
+        © 2025 ReviewPulse AI. Fast, thoughtful code reviews.
+      </div>
+<div class="flex items-center gap-6">
+<a class="hover:text-[#D8DAE8] transition-colors" href="#">Privacy</a>
+<a class="hover:text-[#D8DAE8] transition-colors" href="#">Terms</a>
+<a class="hover:text-[#D8DAE8] transition-colors" href="#">GitHub</a>
+</div>
+</div>
+</footer>
+<!-- Script for interactive example and submit state -->
+<script>
+    function fillPR(url) {
+      const input = document.getElementById('pr-url-input');
+      if (input) {
+        input.value = url;
+        input.focus();
+      }
+    }
+
+    function triggerAnalyze() {
+      const input = document.getElementById('pr-url-input');
+      const toast = document.getElementById('status-toast');
+      const btn = document.getElementById('analyze-btn');
+
+      if (!input.value.trim()) {
+        input.focus();
+        input.parentElement.classList.add('ring-2', 'ring-[#F9B17A]');
+        setTimeout(() => input.parentElement.classList.remove('ring-2', 'ring-[#F9B17A]'), 1000);
+        return;
+      }
+
+      if (toast) {
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.remove('opacity-0'), 10);
+        btn.disabled = true;
+        btn.classList.add('opacity-70');
+
+        setTimeout(() => {
+          toast.innerHTML = '<span class="material-symbols-outlined text-[18px]">check_circle</span><span>PR analyzed successfully. Ready!</span>';
+          setTimeout(() => {
+            toast.classList.add('opacity-0');
+            setTimeout(() => toast.classList.add('hidden'), 200);
+            btn.disabled = false;
+            btn.classList.remove('opacity-70');
+          }, 1800);
+        }, 1200);
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+        e.preventDefault();
+        triggerAnalyze();
+      }
+    });
+  </script>
+</body></html>

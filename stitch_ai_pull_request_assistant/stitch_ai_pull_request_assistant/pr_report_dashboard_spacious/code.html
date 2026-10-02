@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ReviewPulse AI — PR Report #64812</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&amp;family=Jetbrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {brandBg: "#2D3250", cardSurface: "#424769", bodyText: "#D8DAE8", mutedAccent: "#676F9D", accent: "#F9B17A", "on-tertiary-container": "#4b4e5a", "surface-container": "#1b1e34", "surface-dim": "#0f1227", "on-tertiary-fixed-variant": "#434652", "on-secondary-fixed-variant": "#444653", "inverse-primary": "#885123", "tertiary-container": "#bec0ce", "inverse-on-surface": "#2c2f45", outline: "#9f8d82", "secondary-fixed-dim": "#c5c5d6", error: "#ffb4ab", "on-error-container": "#ffdad6", "on-secondary-fixed": "#191b27", "secondary-container": "#464856", "primary-fixed": "#ffdcc4", "surface-container-lowest": "#090c21", "surface-container-highest": "#30334a", "on-surface-variant": "#d7c3b6", "on-primary-container": "#754214", "secondary-fixed": "#e1e1f2", "surface-bright": "#35384f", "primary-fixed-dim": "#ffb780", "on-tertiary": "#2d303b", background: "#0f1227", "primary-container": "#f9b17a", "surface-variant": "#30334a", "on-primary-fixed": "#2f1400", "on-background": "#dfe0fe", primary: "#ffd4b6", "on-tertiary-fixed": "#181b25", surface: "#0f1227", "inverse-surface": "#dfe0fe", "on-primary": "#4e2600", "on-surface": "#dfe0fe", "surface-container-high": "#26283f", "tertiary-fixed-dim": "#c4c6d3", "on-error": "#690005", "error-container": "#93000a", "surface-tint": "#ffb780", secondary: "#c5c5d6", "on-secondary-container": "#b6b7c7", "outline-variant": "#52443b", tertiary: "#dadcea", "on-secondary": "#2e303c", "on-primary-fixed-variant": "#6b3a0d", "tertiary-fixed": "#e0e2f0", "surface-container-low": "#171a2f"}, fontFamily: {sans: ["Geist", "sans-serif"], mono: ["JetBrains Mono", "monospace"], headline: ["Geist"], display: ["Geist"], body: ["Geist"], label: ["Jetbrains Mono"]}, fontSize: {}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="bg-brandBg text-bodyText min-h-screen flex flex-col font-sans antialiased selection:bg-accent selection:text-brandBg">
+<!-- Top Navigation Bar -->
+<header class="w-full bg-[#242841] border-b border-[#424769]/60 sticky top-0 z-50">
+<div class="max-w-[900px] mx-auto px-6 h-16 flex items-center justify-between">
+<!-- Brand & Product Name -->
+<div class="flex items-center gap-6">
+<a class="text-[19px] font-bold text-white tracking-tight flex items-center gap-2.5" href="#">
+<span class="w-8 h-8 rounded-lg bg-[#424769] border border-[#676F9D]/40 flex items-center justify-center text-accent">
+<span class="material-symbols-outlined text-[19px]">terminal</span>
+</span>
+<span>ReviewPulse AI</span>
+</a>
+<nav class="hidden sm:flex items-center gap-5 text-[15px] font-medium text-bodyText">
+<a class="text-white hover:text-accent transition-colors" href="#">Dashboard</a>
+<a class="text-bodyText hover:text-white transition-colors" href="#">Docs</a>
+<a class="text-bodyText hover:text-white transition-colors" href="#">Integrations</a>
+<a class="text-bodyText hover:text-white transition-colors" href="#">Changelog</a>
+</nav>
+</div>
+<!-- Action Cluster -->
+<div class="flex items-center gap-3">
+<button aria-label="Toggle theme" class="p-2 text-bodyText hover:text-white hover:bg-cardSurface rounded-lg transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">dark_mode</span>
+</button>
+<button class="bg-accent text-[#2D3250] font-semibold text-[15px] px-3.5 py-1.5 rounded-lg flex items-center gap-1.5 transition-all hover:brightness-110 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[17px]">bolt</span>
+<span>Analyze PR</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Single Centered Column Layout -->
+<main class="flex-1 w-full max-w-[900px] mx-auto px-6 py-10 space-y-10">
+<!-- 1. Header Card / Block -->
+<section class="bg-cardSurface rounded-[12px] p-8 border border-white/5 shadow-md">
+<div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+<div class="space-y-3.5 flex-1">
+<!-- Status Pill -->
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent text-[#2D3250] font-semibold text-[14px]">
+<span class="w-2 h-2 rounded-full bg-[#2D3250]"></span>
+              Open
+            </span>
+<span class="text-[15px] font-mono text-bodyText/80">PR #64812</span>
+</div>
+<!-- PR Title -->
+<h1 class="text-[24px] font-semibold text-white leading-snug tracking-tight">
+            feat(router): Add optimistic navigation caching &amp; prefetch deduplication
+          </h1>
+<!-- Repo name and PR details -->
+<p class="text-[16px] text-bodyText leading-relaxed">
+            vercel / next.js · PR #64812 · opened by <span class="text-white font-medium">@timneutkens</span>
+</p>
+</div>
+<!-- External Link Button -->
+<div class="shrink-0 pt-1">
+<a class="bg-brandBg hover:bg-[#242841] border border-[#676F9D]/50 hover:border-accent text-white text-[15px] font-medium px-4 py-2.5 rounded-[8px] flex items-center gap-2 transition-colors" href="https://github.com/vercel/next.js" rel="noopener noreferrer" target="_blank">
+<span>View on GitHub</span>
+<span class="material-symbols-outlined text-[17px]">open_in_new</span>
+</a>
+</div>
+</div>
+</section>
+<!-- 2. "Summary" Card -->
+<section class="bg-cardSurface rounded-[12px] p-8 border border-white/5 shadow-md">
+<h2 class="text-[20px] font-semibold text-white tracking-tight mb-4 flex items-center gap-2.5">
+<span class="material-symbols-outlined text-accent text-[22px]">subject</span>
+        Summary
+      </h2>
+<!-- Full untruncated paragraph -->
+<p class="text-[16px] text-bodyText leading-[1.6]">
+        This PR introduces an in-memory client-side cache for prefetch requests during client navigations. By deduplicating concurrent prefetch requests for the same route and caching page payloads for 30 seconds, it significantly reduces redundant server hits during fast tab switches without altering data mutation invalidation behavior. Overall response latency on subsequent sub-page transitions drops considerably for high-traffic Next.js deployments.
+      </p>
+<!-- Stat labels as clean plain text with small colored dots -->
+<div class="mt-8 pt-6 border-t border-mutedAccent/30 flex flex-wrap items-center gap-x-7 gap-y-3 text-[16px] text-bodyText">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-accent"></span>
+<span>Change type: <strong class="text-white font-medium">Feature</strong></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#676F9D]"></span>
+<span>Files changed: <strong class="text-white font-medium">8</strong></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#676F9D]"></span>
+<span>Lines: <strong class="text-white font-mono font-medium">+142</strong> / <span class="text-white font-mono">-37</span></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-accent"></span>
+<span>Est. review time: <strong class="text-white font-medium">~8 min</strong></span>
+</div>
+</div>
+</section>
+<!-- 3. "Affected Modules" Card -->
+<section class="bg-cardSurface rounded-[12px] p-8 border border-white/5 shadow-md">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-[20px] font-semibold text-white tracking-tight flex items-center gap-2.5">
+<span class="material-symbols-outlined text-accent text-[22px]">account_tree</span>
+          Affected Modules
+        </h2>
+<span class="text-[15px] font-mono text-bodyText/80">5 modules</span>
+</div>
+<!-- Horizontal Bar Chart Rows -->
+<div class="space-y-4">
+<!-- Module 1 -->
+<div class="min-h-[44px] flex flex-col justify-center">
+<div class="flex justify-between items-center text-[16px] mb-2">
+<span class="font-mono text-bodyText truncate pr-4">packages/next/src/client/router.ts</span>
+<span class="font-medium text-white shrink-0 font-mono">42%</span>
+</div>
+<div class="w-full bg-brandBg rounded-full h-2.5 overflow-hidden">
+<div class="bg-accent h-2.5 rounded-full transition-all duration-500" style="width: 42%;"></div>
+</div>
+</div>
+<!-- Module 2 -->
+<div class="min-h-[44px] flex flex-col justify-center">
+<div class="flex justify-between items-center text-[16px] mb-2">
+<span class="font-mono text-bodyText truncate pr-4">packages/next/src/shared/lib/router-context.ts</span>
+<span class="font-medium text-white shrink-0 font-mono">28%</span>
+</div>
+<div class="w-full bg-brandBg rounded-full h-2.5 overflow-hidden">
+<div class="bg-accent h-2.5 rounded-full transition-all duration-500" style="width: 28%;"></div>
+</div>
+</div>
+<!-- Module 3 -->
+<div class="min-h-[44px] flex flex-col justify-center">
+<div class="flex justify-between items-center text-[16px] mb-2">
+<span class="font-mono text-bodyText truncate pr-4">packages/next/src/server/render.tsx</span>
+<span class="font-medium text-white shrink-0 font-mono">16%</span>
+</div>
+<div class="w-full bg-brandBg rounded-full h-2.5 overflow-hidden">
+<div class="bg-accent h-2.5 rounded-full transition-all duration-500" style="width: 16%;"></div>
+</div>
+</div>
+<!-- Module 4 -->
+<div class="min-h-[44px] flex flex-col justify-center">
+<div class="flex justify-between items-center text-[16px] mb-2">
+<span class="font-mono text-bodyText truncate pr-4">test/e2e/app-dir/navigation/test.ts</span>
+<span class="font-medium text-white shrink-0 font-mono">10%</span>
+</div>
+<div class="w-full bg-brandBg rounded-full h-2.5 overflow-hidden">
+<div class="bg-accent h-2.5 rounded-full transition-all duration-500" style="width: 10%;"></div>
+</div>
+</div>
+<!-- Module 5 -->
+<div class="min-h-[44px] flex flex-col justify-center">
+<div class="flex justify-between items-center text-[16px] mb-2">
+<span class="font-mono text-bodyText truncate pr-4">docs/routing/prefetching.md</span>
+<span class="font-medium text-white shrink-0 font-mono">4%</span>
+</div>
+<div class="w-full bg-brandBg rounded-full h-2.5 overflow-hidden">
+<div class="bg-accent h-2.5 rounded-full transition-all duration-500" style="width: 4%;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. "Potential Risks" Card -->
+<section class="bg-cardSurface rounded-[12px] p-8 border border-white/5 shadow-md">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-[20px] font-semibold text-white tracking-tight flex items-center gap-2.5">
+<span class="material-symbols-outlined text-accent text-[22px]">warning</span>
+          Potential Risks &amp; Considerations
+        </h2>
+<span class="text-[14px] font-medium text-accent bg-accent/15 px-3 py-1 rounded-full border border-accent/30">
+          3 identified
+        </span>
+</div>
+<!-- Vertical List with 16px+ spacing -->
+<div class="space-y-5">
+<!-- Risk 1 -->
+<div class="flex items-start gap-3.5">
+<span class="w-2.5 h-2.5 rounded-full bg-accent shrink-0 mt-2"></span>
+<p class="text-[16px] text-bodyText leading-[1.6]">
+<strong class="text-white font-medium">Cache invalidation on route transitions:</strong> Verify if rapid backward/forward browser history navigations properly flush stale route payloads.
+          </p>
+</div>
+<!-- Risk 2 -->
+<div class="flex items-start gap-3.5">
+<span class="w-2.5 h-2.5 rounded-full bg-accent shrink-0 mt-2"></span>
+<p class="text-[16px] text-bodyText leading-[1.6]">
+<strong class="text-white font-medium">Memory leak edge cases:</strong> Long-lived single page apps might retain stale route descriptors if client navigations exceed typical session thresholds.
+          </p>
+</div>
+<!-- Risk 3 -->
+<div class="flex items-start gap-3.5">
+<span class="w-2.5 h-2.5 rounded-full bg-accent shrink-0 mt-2"></span>
+<p class="text-[16px] text-bodyText leading-[1.6]">
+<strong class="text-white font-medium">Missing unit test for race conditions:</strong> Prefetch deduplication queue lacks explicit concurrency stress tests in the current test suite.
+          </p>
+</div>
+</div>
+</section>
+<!-- 5. "Suggested Test Cases" Card -->
+<section class="bg-cardSurface rounded-[12px] p-8 border border-white/5 shadow-md">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-[20px] font-semibold text-white tracking-tight flex items-center gap-2.5">
+<span class="material-symbols-outlined text-accent text-[22px]">checklist</span>
+          Suggested Test Cases
+        </h2>
+<span class="text-[15px] text-bodyText/80">4 verification items</span>
+</div>
+<!-- Simple checklist with generous vertical spacing -->
+<div class="space-y-4">
+<label class="flex items-start gap-4 p-4 rounded-[8px] bg-brandBg/60 hover:bg-brandBg border border-[#676F9D]/30 hover:border-accent/50 cursor-pointer transition-colors group">
+<input class="w-5 h-5 mt-0.5 rounded border-[#676F9D] bg-[#2D3250] text-accent focus:ring-accent focus:ring-offset-0 transition cursor-pointer" type="checkbox"/>
+<span class="text-[16px] text-bodyText group-hover:text-white transition-colors leading-[1.6]">
+            Trigger 5 rapid consecutive navigations between two heavy server-component routes and assert only 1 network request is dispatched.
+          </span>
+</label>
+<label class="flex items-start gap-4 p-4 rounded-[8px] bg-brandBg/60 hover:bg-brandBg border border-[#676F9D]/30 hover:border-accent/50 cursor-pointer transition-colors group">
+<input class="w-5 h-5 mt-0.5 rounded border-[#676F9D] bg-[#2D3250] text-accent focus:ring-accent focus:ring-offset-0 transition cursor-pointer" type="checkbox"/>
+<span class="text-[16px] text-bodyText group-hover:text-white transition-colors leading-[1.6]">
+            Verify that <code class="font-mono text-accent bg-brandBg px-1.5 py-0.5 rounded border border-[#676F9D]/40">router.refresh()</code> forcibly invalidates both local prefetch cache and server component payload.
+          </span>
+</label>
+<label class="flex items-start gap-4 p-4 rounded-[8px] bg-brandBg/60 hover:bg-brandBg border border-[#676F9D]/30 hover:border-accent/50 cursor-pointer transition-colors group">
+<input class="w-5 h-5 mt-0.5 rounded border-[#676F9D] bg-[#2D3250] text-accent focus:ring-accent focus:ring-offset-0 transition cursor-pointer" type="checkbox"/>
+<span class="text-[16px] text-bodyText group-hover:text-white transition-colors leading-[1.6]">
+            Confirm backward compatibility in legacy <code class="font-mono text-accent bg-brandBg px-1.5 py-0.5 rounded border border-[#676F9D]/40">pages/</code> directory when mixed routing mode is active.
+          </span>
+</label>
+<label class="flex items-start gap-4 p-4 rounded-[8px] bg-brandBg/60 hover:bg-brandBg border border-[#676F9D]/30 hover:border-accent/50 cursor-pointer transition-colors group">
+<input class="w-5 h-5 mt-0.5 rounded border-[#676F9D] bg-[#2D3250] text-accent focus:ring-accent focus:ring-offset-0 transition cursor-pointer" type="checkbox"/>
+<span class="text-[16px] text-bodyText group-hover:text-white transition-colors leading-[1.6]">
+            Test behavior under throttled 3G network conditions when prefetch aborts mid-flight.
+          </span>
+</label>
+</div>
+</section>
+<!-- 6. "Review Comment" Card -->
+<section class="bg-cardSurface rounded-[12px] p-8 border border-white/5 border-l-4 border-l-accent shadow-md">
+<!-- Comment Card Header with Avatar / Reviewer and Copy Button -->
+<div class="flex items-center justify-between pb-5 border-b border-mutedAccent/30">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-brandBg border border-[#676F9D]/40 flex items-center justify-center text-accent">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-[16px] font-semibold text-white">ai-reviewer</span>
+<span class="text-[14px] text-bodyText/80">generated draft</span>
+</div>
+</div>
+</div>
+<button class="bg-brandBg hover:bg-[#242841] border border-[#676F9D]/50 hover:border-accent text-white text-[15px] font-medium px-4 py-2 rounded-[8px] flex items-center gap-2 transition-colors cursor-pointer" id="copyButton" onclick="copyReviewComment()" type="button">
+<span class="material-symbols-outlined text-[18px]" id="copyIcon">content_copy</span>
+<span id="copyLabel">Copy comment</span>
+</button>
+</div>
+<!-- Comment Body Styled like GitHub PR Comment -->
+<div class="mt-6 p-6 rounded-[8px] bg-brandBg border border-[#676F9D]/30">
+<p class="text-[16px] text-bodyText leading-[1.6]" id="reviewCommentText">
+          Thanks for tackling this! The prefetch deduplication logic in <code class="font-mono text-accent bg-cardSurface px-1.5 py-0.5 rounded border border-[#676F9D]/40">router.ts</code> looks clean and should noticeably reduce edge function invocations. Before approving, could we add a targeted test case asserting that <code class="font-mono text-accent bg-cardSurface px-1.5 py-0.5 rounded border border-[#676F9D]/40">router.refresh()</code> properly purges cached route payloads during fast navigations? Also, double-check how memory cleanup behaves on unmounted tab instances. Overall, great performance win!
+        </p>
+</div>
+<!-- Actions beneath comment -->
+<div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+<span class="text-[14px] text-bodyText/80 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-accent text-[17px]">verified</span>
+          Verified with AST diff parser
+        </span>
+<div class="flex items-center gap-3">
+<button class="text-bodyText hover:text-white text-[15px] font-medium px-3 py-2 transition-colors" type="button">
+            Regenerate
+          </button>
+<button class="bg-accent text-[#2D3250] font-semibold text-[15px] px-4 py-2 rounded-[8px] flex items-center gap-2 transition-all hover:brightness-110 active:scale-95" type="button">
+<span class="material-symbols-outlined text-[17px]">send</span>
+<span>Post to GitHub</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-[#242841] border-t border-[#424769]/60 mt-16 py-8">
+<div class="max-w-[900px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[14px] text-bodyText">
+<div class="flex items-center gap-3">
+<span class="text-white font-semibold text-[16px]">ReviewPulse AI</span>
+<span class="text-[#676F9D]">|</span>
+<span>Developer tooling for open-source contributors</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="hover:text-accent transition-colors" href="#">Documentation</a>
+<a class="hover:text-accent transition-colors" href="#">GitHub Extension</a>
+<a class="hover:text-accent transition-colors" href="#">Status</a>
+</div>
+</div>
+</footer>
+<!-- Micro-interaction Script for Copy Action -->
+<script>
+    function copyReviewComment() {
+      const text = document.getElementById('reviewCommentText').innerText;
+      const copyIcon = document.getElementById('copyIcon');
+      const copyLabel = document.getElementById('copyLabel');
+      
+      navigator.clipboard.writeText(text).then(() => {
+        copyIcon.textContent = 'check';
+        copyLabel.textContent = 'Copied!';
+        setTimeout(() => {
+          copyIcon.textContent = 'content_copy';
+          copyLabel.textContent = 'Copy comment';
+        }, 2000);
+      }).catch(err => {
+        console.error('Could not copy comment', err);
+      });
+    }
+  </script>
+</body></html>
